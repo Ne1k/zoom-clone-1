@@ -35,7 +35,7 @@ const MeetingTypeList = () => {
     if (!client || !user) return;
     try {
       if (!values.dateTime) {
-        toast({ title: 'Please select a date and time' });
+        toast({ title: 'Пожалуйста выберете дату и время ' });
         return;
       }
       const id = crypto.randomUUID();
@@ -73,28 +73,28 @@ const MeetingTypeList = () => {
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       <HomeCard
         img="/icons/add-meeting.svg"
-        title="New Meeting"
-        description="Start an instant meeting"
+        title="Новая конференция"
+        description="Начать конференцию"
         handleClick={() => setMeetingState('isInstantMeeting')}
       />
       <HomeCard
         img="/icons/join-meeting.svg"
-        title="Join Meeting"
-        description="via invitation link"
+        title="Присоединиться к встрече"
+        description="Ссылка приглашение"
         className="bg-blue-1"
         handleClick={() => setMeetingState('isJoiningMeeting')}
       />
       <HomeCard
         img="/icons/schedule.svg"
-        title="Schedule Meeting"
-        description="Plan your meeting"
+        title="Совещание по графику"
+        description="Заплонировать конференцию"
         className="bg-purple-1"
         handleClick={() => setMeetingState('isScheduleMeeting')}
       />
       <HomeCard
         img="/icons/recordings.svg"
-        title="View Recordings"
-        description="Meeting Recordings"
+        title="Посмотреть записи"
+        description="Записи конференций"
         className="bg-yellow-1"
         handleClick={() => router.push('/recordings')}
       />
@@ -103,12 +103,12 @@ const MeetingTypeList = () => {
         <MeetingModal
           isOpen={meetingState === 'isScheduleMeeting'}
           onClose={() => setMeetingState(undefined)}
-          title="Create Meeting"
+          title="Создать конференцию"
           handleClick={createMeeting}
         >
           <div className="flex flex-col gap-2.5">
             <label className="text-base font-normal leading-[22.4px] text-sky-2">
-              Add a description
+              Добавить описание
             </label>
             <Textarea
               className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -119,7 +119,6 @@ const MeetingTypeList = () => {
           </div>
           <div className="flex w-full flex-col gap-2.5">
             <label className="text-base font-normal leading-[22.4px] text-sky-2">
-              Select Date and Time
             </label>
             <ReactDatePicker
               selected={values.dateTime}
@@ -128,7 +127,7 @@ const MeetingTypeList = () => {
               timeFormat="HH:mm"
               timeIntervals={15}
               timeCaption="time"
-              dateFormat="MMMM d, yyyy h:mm aa"
+              dateFormat="dd.MM.yyyy HH:mm"
               className="w-full rounded bg-dark-3 p-2 focus:outline-none"
             />
           </div>
@@ -154,7 +153,7 @@ const MeetingTypeList = () => {
         onClose={() => setMeetingState(undefined)}
         title="Type the link here"
         className="text-center"
-        buttonText="Join Meeting"
+        buttonText="Join Meeting "
         handleClick={() => router.push(values.link)}
       >
         <Input
